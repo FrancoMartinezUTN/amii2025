@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Definimos el tiempo t desde 0 hasta 10 con 1000 puntos
+t = np.linspace(0, 10, 1000)
+
+# Diferentes valores de a y b para analizar
+parametros = [
+    (1, 0.5),   # curva suave, decae lentamente
+    (1, 1),     # referencia
+    (1, 2),     # decae rápido
+    (2, 1),     # misma velocidad pero más alta
+    (0.5, 1)    # más baja pero misma velocidad
+]
+
+plt.figure(figsize=(10, 6))
+
+# Graficamos todas las combinaciones
+for a, b in parametros:
+    c = a * t * np.exp(-b * t)
+    plt.plot(t, c, label=f'a={a}, b={b}')
+
+# Detalles del gráfico
+plt.title('Gráfico de $c(t) = a t e^{-bt}$ para distintos parámetros a y b')
+plt.xlabel('Tiempo (t)')
+plt.ylabel('Concentración c(t)')
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()

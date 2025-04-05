@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Dominio del tiempo
+t = np.linspace(0, 10, 1000)
+
+# Valor fijo de b
+b = 1
+
+# Diferentes valores de a
+a_values = [0.5, 1, 2]
+
+plt.figure(figsize=(10, 6))
+for a in a_values:
+    c = a * t * np.exp(-b * t)
+    plt.plot(t, c, label=f'a = {a}, b = {b}')
+
+plt.title('Efecto del parámetro a sobre c(t)')
+plt.xlabel('t (tiempo)')
+plt.ylabel('c(t) = a·t·e^(-bt)')
+plt.legend()
+plt.grid(True)
+plt.show()

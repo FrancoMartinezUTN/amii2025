@@ -1,0 +1,20 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Dominio del tiempo
+t = np.linspace(0, 10, 1000)
+
+# Combinaciones (a, b)
+parametros = [(1, 1), (2, 1), (1, 2), (0.5, 0.5)]
+
+plt.figure(figsize=(10, 6))
+for a, b in parametros:
+    c = a * t * np.exp(-b * t)
+    plt.plot(t, c, label=f'a = {a}, b = {b}')
+
+plt.title('Efectos combinados de a y b sobre c(t)')
+plt.xlabel('t (tiempo)')
+plt.ylabel('c(t) = a·t·e^(-bt)')
+plt.legend()
+plt.grid(True)
+plt.show()

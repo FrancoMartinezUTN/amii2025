@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
+
+# Definir la EDO como función
+def f18a(x, y):
+    return np.exp(-x) - 2*y
+
+# Intervalo de integración y condición inicial
+x_span = (0, 5)
+y0 = [0]  # condición inicial: y(0) = 0
+
+# Resolver la EDO
+sol = solve_ivp(f18a, x_span, y0, t_eval=np.linspace(0, 5, 100))
+
+# Graficar la solución
+plt.plot(sol.t, sol.y[0], label="Solución de $y' = e^{-x} - 2y$")
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title('Solución Numérica - Ejercicio 18a')
+plt.grid(True)
+plt.legend()
+plt.show()

@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parámetros del problema
+T_amb = 20         # Temperatura ambiente
+T0 = 150           # Temperatura inicial
+k = 0.1075         # Calculado en el paso anterior
+
+# Función temperatura T(t)
+def T(t):
+    return T_amb + (T0 - T_amb) * np.exp(-k * t)
+
+# Crear valores de tiempo
+t_vals = np.linspace(0, 40, 200)
+T_vals = T(t_vals)
+
+# Graficar
+plt.figure(figsize=(8, 5))
+plt.plot(t_vals, T_vals, label='Temperatura $T(t)$', color='crimson')
+plt.axhline(y=22, color='blue', linestyle='--', label='22 °C')
+plt.axhline(y=T_amb, color='gray', linestyle='--', label='Temp. ambiente (20 °C)')
+plt.title('Enfriamiento del pastel con la Ley de Newton')
+plt.xlabel('Tiempo (minutos)')
+plt.ylabel('Temperatura (°C)')
+plt.grid(True)
+plt.legend()
+plt.show()
